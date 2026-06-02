@@ -48,13 +48,13 @@ def criar_generos():
             try:
                 # Tenta criar com ID específico
                 cursor.execute(
-                    "INSERT INTO catalogo_genero (id, nome) VALUES (?, ?);",
+                    "INSERT INTO catalogo_genero (id, nome) VALUES (%s, %s);",
                     [genero["id"], genero["nome"]],
                 )
             except IntegrityError:
                 # Se já existir, atualiza
                 cursor.execute(
-                    "UPDATE catalogo_genero SET nome = ? WHERE id = ?;",
+                    "UPDATE catalogo_genero SET nome = %s WHERE id = %s;",
                     [genero["nome"], genero["id"]],
                 )
 
@@ -148,24 +148,24 @@ def criar_filmes():
             try:
                 # Tenta criar filme com ID específico
                 cursor.execute(
-                    "INSERT INTO catalogo_filme (id, titulo, sinopse, ano, data_cadastro) VALUES (?, ?, ?, ?, datetime('now'));",
+                    "INSERT INTO catalogo_filme (id, titulo, sinopse, ano, data_cadastro) VALUES (%s, %s, %s, %s, datetime('now'));",
                     [filme["id"], filme["titulo"], filme["sinopse"], filme["ano"]],
                 )
             except IntegrityError:
                 # Se já existir, atualiza
                 cursor.execute(
-                    "UPDATE catalogo_filme SET titulo = ?, sinopse = ?, ano = ? WHERE id = ?;",
+                    "UPDATE catalogo_filme SET titulo = %s, sinopse = %s, ano = %s WHERE id = %s;",
                     [filme["titulo"], filme["sinopse"], filme["ano"], filme["id"]],
                 )
 
             # Limpa relações de gênero existentes e adiciona novas
             cursor.execute(
-                "DELETE FROM catalogo_filme_generos WHERE filme_id = ?;", [filme["id"]]
+                "DELETE FROM catalogo_filme_generos WHERE filme_id = %s;", [filme["id"]]
             )
 
             for genero_id in filme["generos"]:
                 cursor.execute(
-                    "INSERT INTO catalogo_filme_generos (filme_id, genero_id) VALUES (?, ?);",
+                    "INSERT INTO catalogo_filme_generos (filme_id, genero_id) VALUES (%s, %s);",
                     [filme["id"], genero_id],
                 )
 
