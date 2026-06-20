@@ -1,4 +1,4 @@
-# Open-Critics (CineReview)
+# Open-Critics CineReview(Guia de como iniciar o projeto e realiar os testes)
 
 Sistema de avaliação de filmes com backend Django REST API e frontend estático em HTML/CSS/JS.
 
@@ -22,10 +22,10 @@ source venv/bin/activate   # macOS/Linux
 # venv\Scripts\activate    # Windows
 ```
 
-### 3. Instalar dependências
+### 3. Instalar dependências(com o virtual environment ativado)
 
 ```bash
-pip install "django>=4.2,<5" djangorestframework django-cors-headers
+pip install -r requirements.txt
 ```
 
 ### 4. Configurar o banco de dados
@@ -36,7 +36,17 @@ O projeto usa SQLite. As migrations criam as tabelas e populam o banco com gêne
 python manage.py migrate
 ```
 
-### 5. Iniciar o backend (API)
+### 5. Realizar os testes
+
+Navegue até o diretório em que os testes estão inseridos e relize os testes
+```bash
+cd catalogo/tests
+pytest test_*
+```
+
+## OPCIONAL ↓
+
+### Iniciar o backend (API)
 
 Em um terminal, com o ambiente virtual ativado:
 
@@ -46,7 +56,7 @@ python manage.py runserver 8001
 
 A API ficará disponível em `http://localhost:8001/api/`.
 
-### 6. Iniciar o frontend
+### Iniciar o frontend
 
 Em **outro terminal**:
 
