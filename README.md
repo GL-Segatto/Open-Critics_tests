@@ -96,11 +96,17 @@ python manage.py createsuperuser
 
 ```
 Open-Critics/
-├── catalogo/          # App Django (models, views, API)
-├── filmes_project/    # Configurações do Django
-├── frontend/          # Interface web (HTML, CSS, JS)
-├── scripts/           # Scripts auxiliares (ex.: popular_banco.py)
-└── manage.py
+├── catalogo/                        # App Django (models, views, API)
+│   ├── tests                        # Diretório dos testes
+│   │   ├── conftest.py
+│   │   ├── test_acceptance.py
+│   │   └── test_api_interfaces.py
+├── filmes_project/                  # Configurações do Django
+├── frontend/                        # Interface web (HTML, CSS, JS)
+├── scripts/                         # Scripts auxiliares (ex.: popular_banco.py)
+├── manage.py
+└── requirements.txt                 # Possuí todas as dependências
+
 ```
 
 ## Repopular o banco manualmente (opcional)
